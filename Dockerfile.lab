@@ -1,0 +1,26 @@
+FROM docker:24.0.5-dind
+
+# Install basic tools & OpenSSH server
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache openssh sudo vim curl net-tools
+
+# Create user
+RUN adduser -D devuser && \
+    echo "devuser:password" | chpasswd && \
+    adduser devuser wheel && \
+    addgroup -S docker && adduser devuser docker
+
+# Configure SSH
+RUN mkdir -p /var/run/sshd
+RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config && \
+    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+
+# Generate SSH host keys at build time
+RUN ssh-keygen -A
+
+# Expose SSH & Docker ports
+EXPOSE 22 2375 3000
+
+# Start dockerd and sshd at container runtime
+CMD ["sh", "-c", "dockerd-entrypoint.sh & /usr/sbin/sshd -D"]

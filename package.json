@@ -1,0 +1,30 @@
+{
+  "name": "docker-image-transfer-test",
+  "version": "1.0.0",
+  "description": "",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "tsx index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.1",
+  "devDependencies": {
+    "@types/node": "^24.6.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "@types/express": "^5.0.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "lowdb": "^7.0.1",
+    "tsx": "^4.19.2",
+    "uuid": "^11.0.2",
+    "zod": "^3.23.8"
+  },
+  "licenses": [
+    "MIT"
+  ]
+}
