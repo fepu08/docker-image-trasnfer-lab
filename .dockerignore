@@ -3,3 +3,4 @@ node_modules
 README.md
 docker-compose.yml
 *.tar
+build.sh
