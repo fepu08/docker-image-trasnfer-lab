@@ -12,7 +12,7 @@ docker run -d --privileged --rm --name ssh-test -p 2222:22 -p 3001:3000 ssh-node
 ## 2. Build Image
 
 ```bash
-docker build -t my-app:latest .
+docker build -f backend_service/Dockerfile -t my-app:latest ./backend_service
 ```
 
 ## 3. Save Image
